@@ -3,11 +3,14 @@ import App from './App.vue';
 import '@/assets/css/tailwind.css';
 import router from '@/router';
 import {dollarFilter, percentFilter} from '@/filters';
+import {VueSpinners} from '@saeris/vue-spinners';
+
 
 Vue.filter('dollar', dollarFilter)
 Vue.filter('percent', percentFilter)
 Vue.config.productionTip = false
 
+Vue.use(VueSpinners);
 
 new Vue({
   router,

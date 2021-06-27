@@ -1,18 +1,18 @@
 const url = 'https://api.coincap.io/v2';
 
 function getAssets() {
-     return fetch(`${url}/assets?limit=20`)
-            .then(response => response.json())
-            .then(response => response.data)
+    return fetch(`${url}/assets?limit=20`)
+        .then(response => response.json())
+        .then(response => response.data)
 }
 
 function getAsset(coin) {
     return fetch(`${url}/assets/${coin}`)
-            .then(response => response.json())
-            .then(response => response.data)
+        .then(response => response.json())
+        .then(response => response.data)
 }
 
-function getAssetHistory (coin) {
+function getAssetHistory(coin) {
     const now = new Date()
     const end = now.getTime()
     now.setDate(now.getDate() - 1)
@@ -23,8 +23,22 @@ function getAssetHistory (coin) {
         .then(response => response.data)
 }
 
+function getExchange(id) {
+    return fetch(`${url}/exchanges/${id}`)
+        .then(response => response.json())
+        .then(response => response.data)
+}
+
+function getMarkets(coin) {
+    return fetch(`${url}/assets/${coin}/markets?limit=5`)
+        .then(response => response.json())
+        .then(response => response.data)
+}
+
 export default {
     getAssets,
     getAsset,
-    getAssetHistory
+    getAssetHistory,
+    getExchange,
+    getMarkets
 }
